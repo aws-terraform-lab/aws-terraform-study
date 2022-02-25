@@ -1,0 +1,3 @@
+aws_config.tf
+.terraform.lock.hcl
+.terraform
