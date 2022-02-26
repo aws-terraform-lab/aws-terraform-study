@@ -9,3 +9,10 @@ provider "aws" {
   secret_key = "secret_key"
 }
 ```
+
+ou create a .env file in root dir with aws ENV vars
+```shell
+AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=access_key
+AWS_SECRET_ACCESS_KEY=secret_key
+```

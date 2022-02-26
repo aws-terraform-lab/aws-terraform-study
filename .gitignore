@@ -1,3 +1,6 @@
 aws_config.tf
 .terraform.lock.hcl
 .terraform
+.env
+terraform.tfstate
+terraform.tfstate.backup
