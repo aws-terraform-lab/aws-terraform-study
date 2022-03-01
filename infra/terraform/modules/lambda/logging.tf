@@ -8,7 +8,7 @@ resource "aws_cloudwatch_log_group" "example" {
 
 # See also the following AWS managed policy: AWSLambdaBasicExecutionRole
 resource "aws_iam_policy" "lambda_logging" {
-  name        = "lambda_logging"
+  name        = "lambda_logging_${var.function_name}"
   path        = "/"
   description = "IAM policy for logging from a lambda"
 
@@ -24,11 +24,22 @@ resource "aws_iam_policy" "lambda_logging" {
       ],
       "Resource": "arn:aws:logs:*:*:*",
       "Effect": "Allow"
+    },
+    {
+        "Action": [
+            "dynamodb:*"
+        ],
+        "Resource": "*",
+        "Effect": "Allow"
     }
   ]
 }
 EOF
 }
+
+
+
+
 
 resource "aws_iam_role_policy_attachment" "lambda_logs" {
   role       = aws_iam_role.iam_for_lambda.name
