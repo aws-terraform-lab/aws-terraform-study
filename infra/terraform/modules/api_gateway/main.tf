@@ -12,8 +12,8 @@ resource "aws_api_gateway_rest_api" "example" {
 
 resource "aws_api_gateway_resource" "example" {
   parent_id   = aws_api_gateway_rest_api.example.root_resource_id
-  path_part   = "lock"
   rest_api_id = aws_api_gateway_rest_api.example.id
+  path_part   = "lock"
 }
 
 resource "aws_api_gateway_method" "example" {
@@ -44,6 +44,8 @@ resource "aws_lambda_permission" "lambda_permission" {
   source_arn = "${aws_api_gateway_rest_api.example.execution_arn}/*/POST/lock"
 }
 
+resource "random_uuid" "test" {
+}
 
 
 resource "aws_api_gateway_deployment" "example" {
@@ -61,7 +63,7 @@ resource "aws_api_gateway_deployment" "example" {
       aws_api_gateway_resource.example.id,
       aws_api_gateway_method.example.id,
       aws_api_gateway_integration.example.id,
-      "force"
+      random_uuid.test.result
     ]))
   }
 
