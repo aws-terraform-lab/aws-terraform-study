@@ -1,6 +1,6 @@
 # aws-terraform-study
 
-Create a file named `aws_config.tf` in root and put your aws credentials, otherwise privide this one by environment
+Create a file named `aws_config.tf` in root and put your aws credentials, otherwise provide this one by environment
 
 ```terraform
 provider "aws" {
